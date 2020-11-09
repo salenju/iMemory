@@ -30,3 +30,5 @@ yarn.lock*
 .idea
 package-lock.json
 /.idea
+
+# Mock.js*    // 打包的时候使用
