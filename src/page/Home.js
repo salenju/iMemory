@@ -1,42 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import _ from "loadsh";
 
 import SideMenu from "../components/SideMenu.js";
-
-const homeSideMenu = {
-  title: "菜单",
-  menuItems: [
-    {
-      value: "Dashboard",
-      link: "",
-    },
-    {
-      value: "Shorcuts",
-      link: "",
-    },
-    {
-      value: "Overview",
-      link: "",
-    },
-    {
-      value: "我的收藏",
-      link: "",
-    },
-    {
-      value: "关于我们",
-      link: "",
-    },
-    {
-      value: "登录",
-      link: "/user-center/login",
-    },
-  ],
-};
+import { MockData } from "../Mock";
 
 const Home = () => {
+  const { HOME } = MockData;
   return (
-    <Wrapper className="home">
-      <SideMenu menu={homeSideMenu} />
+    <Wrapper className="home" bgUrl={HOME.BACKGROUND_IMGS[_.random(0, 5)]}>
+      <SideMenu menu={HOME.SIDE_MENU} />
       <section></section>
     </Wrapper>
   );
@@ -44,7 +17,10 @@ const Home = () => {
 
 const Wrapper = styled("div")`
   section {
-    background: url("https://cdn.pixabay.com/photo/2015/09/05/20/02/coding-924920_960_720.jpg")
+    background: url(${(props) =>
+        props.bgUrl
+          ? props.bgUrl
+          : "https://cdn.pixabay.com/photo/2015/09/05/20/02/coding-924920_960_720.jpg"})
       no-repeat;
     background-position: center;
     background-size: cover;
