@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 
-import ImgCarousel from "../../../components/ImgCarousel";
+import ImgCarouselTest from "../../../components/ImgCarousel/test";
 
 const Login = () => {
-  return (
-    <Wrapper className="login">
-      <ImgCarousel />
-    </Wrapper>
-  );
+    return (
+        <Wrapper className="login">
+            <ImgCarouselTest />
+        </Wrapper>
+    );
 };
 
 const Wrapper = styled("div")``;

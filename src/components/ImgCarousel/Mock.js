@@ -1,27 +1,42 @@
 export const MockData = [
-  {
-    imgUrl:
-      "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1917853737,154946821&fm=26&gp=0.jpg",
-    value: "美女1",
-  },
-  {
-    imgUrl:
-      "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1184548421,1539438209&fm=26&gp=0.jpg",
-    value: "美女2",
-  },
-  {
-    imgUrl:
-      "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2625008281,94811485&fm=26&gp=0.jpg",
-    value: "美女3",
-  },
-  {
-    imgUrl:
-      "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2689333879,2002239883&fm=26&gp=0.jpg",
-    value: "美女4",
-  },
-  {
-    imgUrl:
-      "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1396521707,1973816781&fm=26&gp=0.jpg",
-    value: "美女5",
-  },
+    {
+        imgUrl: "http://pic1.win4000.com/pic/4/ea/b57ff8a63f.jpg",
+        value: "柔情似水的古风美女1",
+        size: {
+            width: 675,
+            height: 1134,
+        },
+    },
+    {
+        imgUrl: "http://pic1.win4000.com/pic/8/c9/94e31299750.jpg",
+        value: "汉族美女古典风韵唯美",
+        size: {
+            width: 1600,
+            height: 2400,
+        },
+    },
+    {
+        imgUrl: "http://pic1.win4000.com/pic/4/6c/7a6e337a85.jpg",
+        value: "柔情似水的古风美女",
+        size: {
+            width: 1024,
+            height: 1536,
+        },
+    },
+    {
+        imgUrl: "http://pic1.win4000.com/pic/0/9f/8803e66522.jpg",
+        value: "柔情似水的古风美女",
+        size: {
+            width: 1024,
+            height: 675,
+        },
+    },
+    {
+        imgUrl: "http://pic1.win4000.com/pic/3/74/55479521e8.jpg",
+        value: "韩系古风美女清纯小清新 + 柔情似水的古风美女 + 汉族美女古典风韵唯美",
+        size: {
+            width: 1024,
+            height: 2216,
+        },
+    },
 ];
