@@ -2,15 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import _ from 'loadsh'
 
-import SideMenu from '../components/SideMenu.js'
-import { MockData } from '../Mock'
-import { Config } from '../const/Config'
+import SideMenu from '../components/SideMenu'
+import { MockData } from '../mock'
+import Config from '../const/Config'
 
 const Home = () => {
   const { HOME } = MockData
   return (
     <Wrapper className="home" bgUrl={HOME.BACKGROUND_IMGS[_.random(0, 5)]}>
-      <SideMenu menu={Config.SIDE_MENU} />
+      <SideMenu menu={Config.SIDE_MENU_CONFIG} />
       <section></section>
     </Wrapper>
   )

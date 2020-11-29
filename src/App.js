@@ -1,35 +1,35 @@
-import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Loadable from "react-loadable";
+import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Loadable from 'react-loadable'
 
 const Loading = ({ isLoading, error }) => {
   if (isLoading) {
-    return "loading";
+    return 'loading'
   } else if (error) {
-    return error;
+    return error
   }
-  return null;
-};
+  return null
+}
 
 const Home = Loadable({
   loading: Loading,
-  loader: () => import("./page/Home"),
-});
+  loader: () => import('./page/Home'),
+})
 
 const UserCenter = {
   Login: Loadable({
     loading: Loading,
-    loader: () => import("./page/UserCenter/Login"),
+    loader: () => import('./page/UserCenter/Login'),
   }),
   Register: Loadable({
     loading: Loading,
-    loader: () => import("./page/UserCenter/Register"),
+    loader: () => import('./page/UserCenter/Register'),
   }),
   FindPassword: Loadable({
     loading: Loading,
-    loader: () => import("./page/UserCenter/FindPassword"),
+    loader: () => import('./page/UserCenter/FindPassword'),
   }),
-};
+}
 
 const App = () => {
   return (
@@ -49,7 +49,7 @@ const App = () => {
         />
       </Switch>
     </BrowserRouter>
-  );
-};
+  )
+}
 
-export default App;
+export default App

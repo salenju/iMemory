@@ -1,6 +1,6 @@
-export const Config = {
-  // 左侧menu
-  SIDE_MENU: {
+const Config = {
+  // 左侧menu配置
+  SIDE_MENU_CONFIG: {
     title: '菜单',
     menuItems: [
       {
@@ -29,4 +29,23 @@ export const Config = {
       },
     ],
   },
+
+  // Header配置
+  HEADER_CONFIG: {},
+
+  // Footer配置
+  FOOTER_CONFIG: {},
+
+  // Theme配置
+  THEME_CONFIG: {
+    '@layout-header-background': '#f5f5f5',
+    '@layout-body-background': '#f5f5f5',
+    '@layout-footer-background': '#f5f5f5',
+    '@primary-color': '#0e8aec',
+  },
+
+  // 白色/暗黑模式配置(暗黑模式默认关闭)
+  DARK_MODULE: false,
 }
+
+export default Config

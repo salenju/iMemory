@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React from 'react'
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 /**
  * 入参：
@@ -17,18 +17,18 @@ import { Link } from "react-router-dom";
  */
 
 const SideMenu = (props) => {
-  const { menu } = props;
+  const { menu } = props
 
   return (
-    <Wrapper className="side-menu">
-      <div class="continer">
+    <Wrapper classNameName="side-menu">
+      <div className="continer">
         <input type="checkbox" id="check" />
-        <label for="check">
+        <label htmlFor="check">
           <i id="btn">
-            {" "}
+            {' '}
             <svg
               t="1598165008780"
-              class="icon"
+              className="icon"
               viewBox="0 0 1024 1024"
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@ const SideMenu = (props) => {
           <i id="cancel">
             <svg
               t="1598165466455"
-              class="icon"
+              className="icon"
               viewBox="0 0 1024 1024"
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
@@ -62,8 +62,8 @@ const SideMenu = (props) => {
             </svg>
           </i>
         </label>
-        <div class="sidebar">
-          <header>{menu ? menu.title : "Menu"}</header>
+        <div className="sidebar">
+          <header>{menu ? menu.title : 'Menu'}</header>
           <ul>
             {menu &&
               menu.menuItems &&
@@ -76,12 +76,12 @@ const SideMenu = (props) => {
         </div>
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
-const Wrapper = styled("div")`
+const Wrapper = styled('div')`
   body {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
   }
 
   * {
@@ -170,6 +170,6 @@ const Wrapper = styled("div")`
   #check:checked ~ .sidebar {
     left: 0;
   }
-`;
+`
 
-export default SideMenu;
+export default SideMenu
