@@ -1,3 +1,4 @@
+import React from 'react'
 const Config = {
   // Header配置
   HEADER_CONFIG: {
@@ -47,9 +48,9 @@ const Config = {
 
   // Theme配置
   THEME_CONFIG: {
-    '@ime-header-background': '#f5f5f5',
-    '@ime-body-background': '#f5f5f5',
-    '@ime-footer-background': '#f5f5f5',
+    '@ime-header-background': '#141414',
+    '@ime-body-background': '#ffffff',
+    '@ime-footer-background': '#141414',
     '@primary-color': '#0e8aec',
   },
 

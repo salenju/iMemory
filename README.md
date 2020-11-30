@@ -7,24 +7,24 @@
 ## 2.项目结构
 
 ```
-├── public                  // 入口文件
+├── public                              // 入口文件
 ├── src
-    ├── components          // 组件
-        ├── Layout          // 整体公共布局
-        ├── SideMenu        // 侧边menu
-        ├──
-        ├──
+    ├── components                      // 组件
+        ├── Layout                      // 整体公共布局
+        ├── SideMenu                    // 侧边menu
+        ├── ImgCard                     // 图片展示卡片
+        ├── ImgCarousel                 // 图片放大查看器
         ├──
         ├──
         ├──
         └──
-    ├── const               // 常量和配置
-    ├── mock                // Mock数据
-    ├── page                // 页面
-    └── App.js              // 路由配置
-├── .eslintrc.js            // ESlint配置
-├── config-overrides.js     // webpack配置
-├── theme.js                // 
+    ├── const                           // 常量和配置
+    ├── mock                            // Mock数据
+    ├── page                            // 页面
+    └── App.js                          // 路由配置
+├── .eslintrc.js                        // ESlint配置
+├── config-overrides.js                 // webpack配置
+├── theme.js                            // 
 
 
 ```

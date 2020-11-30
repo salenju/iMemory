@@ -1,26 +1,33 @@
 import React from 'react'
 import { Layout } from 'antd'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 
 import Header from './Header'
 import Footer from './Footer'
+import { Config } from '../../const'
 
 const { Content } = Layout
 
 const LayoutWrapper = (props) => {
   return (
     <Wrapper className="ime-layout-wrapper">
-      <header>
-        <Header />
-      </header>
-      <Content className="ime-layout-content"> {props.children}</Content>
-      <footer>
-        <Footer />
-      </footer>
+      <ThemeProvider theme={Config.THEME_CONFIG}>
+        <header>
+          <Header />
+        </header>
+        <Content className="ime-layout-content"> {props.children}</Content>
+        <footer>
+          <Footer />
+        </footer>
+      </ThemeProvider>
     </Wrapper>
   )
 }
 
-const Wrapper = styled('div')``
+const Wrapper = styled('div')`
+  .ime-layout-content {
+    min-height: calc(100vh - 100px);
+  }
+`
 
 export default LayoutWrapper
