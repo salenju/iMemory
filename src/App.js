@@ -1,6 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Loadable from 'react-loadable'
+import Loadable from 'react-loadable' // 路由懒加载
+
+import LayoutWrapper from './components/Layout/LayoutWrapper'
 
 const Loading = ({ isLoading, error }) => {
   if (isLoading) {
@@ -34,20 +36,22 @@ const UserCenter = {
 const App = () => {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/user-center/login" component={UserCenter.Login} />
-        <Route
-          exact
-          path="/user-center/register"
-          component={UserCenter.Register}
-        />
-        <Route
-          exact
-          path="/user-center/find-password"
-          component={UserCenter.FindPassword}
-        />
-      </Switch>
+      <LayoutWrapper>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/user-center/login" component={UserCenter.Login} />
+          <Route
+            exact
+            path="/user-center/register"
+            component={UserCenter.Register}
+          />
+          <Route
+            exact
+            path="/user-center/find-password"
+            component={UserCenter.FindPassword}
+          />
+        </Switch>
+      </LayoutWrapper>
     </BrowserRouter>
   )
 }

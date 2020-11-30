@@ -10,8 +10,8 @@
 ├── public                  // 入口文件
 ├── src
     ├── components          // 组件
-        ├──
-        ├──
+        ├── Layout          // 整体公共布局
+        ├── SideMenu        // 侧边menu
         ├──
         ├──
         ├──
