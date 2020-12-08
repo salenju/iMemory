@@ -11,7 +11,7 @@ const ImgLazyLoad = () => {
       <div className="ime-photos">
         <div className="ime-photos-column">
           {_imgList1.map((item, index) => (
-            <LazyLoad key={index} height={100}>
+            <LazyLoad key={index} height={100} offset={100} scroll={true}>
               <img src={item.imgUrl} />
             </LazyLoad>
           ))}
