@@ -26,7 +26,7 @@ const Config = {
     menuItems: [
       {
         value: 'Dashboard',
-        link: '',
+        link: '/',
       },
       {
         value: '我的收藏',
@@ -35,6 +35,10 @@ const Config = {
       {
         value: '关于我们',
         link: '',
+      },
+      {
+        value: '图片懒加载',
+        link: '/img-lazy-load',
       },
       {
         value: '登录',

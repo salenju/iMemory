@@ -33,6 +33,12 @@ const UserCenter = {
   }),
 }
 
+// 图片懒加载
+const ImgLazyLoad = Loadable({
+  loading: Loading,
+  loader: () => import('./page/ImgLazyLoad'),
+})
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -50,6 +56,7 @@ const App = () => {
             path="/user-center/find-password"
             component={UserCenter.FindPassword}
           />
+          <Route exact path="/img-lazy-load" component={ImgLazyLoad} />
         </Switch>
       </LayoutWrapper>
     </BrowserRouter>

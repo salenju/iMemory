@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import _ from 'loadsh'
 
 import { ImgCard } from '../components'
 import { MockUtil } from '../utils'
