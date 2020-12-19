@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
-import { UploadAndDrag } from '../../components'
-
 const FindPassword = () => {
   return (
     <Wrapper className="find-password">
-      <UploadAndDrag />
+      find-password
     </Wrapper>
   )
 }
