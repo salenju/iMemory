@@ -26,6 +26,7 @@ const LayoutWrapper = (props) => {
 
 const Wrapper = styled('div')`
   .ime-layout-content {
+    margin: 8rem 0 0;
     min-height: calc(100vh - 100px);
   }
 `
