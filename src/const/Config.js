@@ -33,8 +33,8 @@ const Config = {
         link: '',
       },
       {
-        value: '关于我们',
-        link: '',
+        value: '找回密码',
+        link: '/user-center/find-password',
       },
       {
         value: '图片懒加载',
