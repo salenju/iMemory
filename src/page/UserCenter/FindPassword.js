@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
-import UploadAndDrag01 from '../../components/common/UploadAndDrag/UploadAndDrag01'
+import UploadAndDrag from '../../components/common/UploadAndDrag/UploadAndDrag'
 import UploadMockData from '../../mock/UploadMockData'
 
 const FindPassword = () => {
@@ -11,7 +11,7 @@ const FindPassword = () => {
 
   return (
     <Wrapper className="find-password">
-      <UploadAndDrag01 defaultData={UploadMockData} callback={getFileList} />
+      <UploadAndDrag defaultData={UploadMockData} callback={getFileList} />
     </Wrapper>
   )
 }
