@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Upload, Modal, notification } from 'antd'
 import styled from 'styled-components'
-import { Drag } from 'mys-react'
+import { OssUploader } from 'bmo-oss'
+
+let ossSetting = {
+  env: OssUploader.env(),
+  project: 'mol',
+}
+OssUploader.init(ossSetting)
 
 const acceptedFileTypes = [
   '.pdf',
@@ -40,19 +46,11 @@ const UploadAndDrag = (props) => {
   }
 
   const handlePreview = async (file) => {
-    debugger
-    if (file && file.url) {
-      setPreviewImage(file.url)
-      setPreviewVisible(true)
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj)
     }
-  }
-
-  const handleDelete = (file) => {
-    if (file && file.uid) {
-      let _fileList = [...fileList]
-      _fileList = _fileList.filter((item) => item.uid !== file.uid)
-      setFileList(_fileList)
-    }
+    setPreviewImage(file.url || file.preview)
+    setPreviewVisible(true)
   }
 
   const handleCallBack = (fileList) => {
@@ -116,50 +114,106 @@ const UploadAndDrag = (props) => {
     const newExten = extensionPart.replace(/\s/g, '')
     const newFileName = newName + '.' + Date.now() + newExten
 
-    // let url = await OssUploader.upload(file, `mall/${newFileName}`)
-    // if (!url) {
-    //   return
-    // }
+    let url = await OssUploader.upload(file, `mall/${newFileName}`)
+    if (!url) {
+      return
+    }
 
-    // let fileItem = {
-    //   uid: file.uid,
-    //   url: url,
-    //   name: file.name,
-    //   size: file.size,
-    // }
-    // fileList.push(fileItem)
-    // handleChange(fileList)
-    // handleCallBack(fileList)
+    let fileItem = {
+      uid: file.uid,
+      url: url,
+      name: file.name,
+      size: file.size,
+    }
+    fileList.push(fileItem)
+    handleChange(fileList)
+    handleCallBack(fileList)
   }
+
+  const handleChange = (fileList) => {
+    setFileList(fileList)
+  }
+
+  // 拖拽
+  useEffect(() => {
+    //收集图片dom
+    let images = Array.from(
+      document.querySelectorAll('#picWall .upload-list-item-image')
+    )
+    let _fileList = [...fileList]
+
+    if (images && images.length > 0) {
+
+      //如果image所在的item有remove class 则必须过滤掉
+      images.forEach((el, index) => {
+        // 每次触发重新设置key
+        // el.setAttribute('key', index)
+
+        //如果已经设置draggable说明已经添加事件监听，无需再添加监听
+        if (!el.attributes.draggable) {
+          el.setAttribute('draggable', true)
+        }
+        el.addEventListener('dragstart', (e) => {
+          e.dataTransfer.setData('tt', Number(e.target.attributes.tt.value))
+        })
+        el.addEventListener('dragenter', (e) => {})
+        el.addEventListener('dragover', (e) => e.preventDefault())
+        el.addEventListener('drop', (e) => {
+          e.preventDefault()
+          e.stopPropagation()
+
+          const oldIndex = Number(e.dataTransfer.getData('tt'))
+          const newIndex = Number(e.target.attributes.tt.value)
+          if (oldIndex != newIndex) {
+            //拖拽后的逻辑
+            let temp = _fileList[oldIndex]
+            if (newIndex > oldIndex) {
+              for (let i = Number(oldIndex); i < Number(newIndex); i++) {
+                _fileList[i] = _fileList[i + 1]
+              }
+            } else {
+              for (let i = Number(oldIndex); i > Number(newIndex); i--) {
+                _fileList[i] = _fileList[i - 1]
+              }
+            }
+            _fileList[newIndex] = temp
+          }
+          setFileList(_fileList)
+        })
+      })
+    }
+
+    handleCallBack(_fileList)
+
+    return () => {
+      let els = document.querySelectorAll(
+        '#picWall .ant-upload-list-item-image'
+      )
+      ;[].forEach.call(els, (el) => {
+        el.removeEventListener('dragstart', () => {})
+        el.removeEventListener('drop', () => {})
+        el.removeEventListener('dragenter', (e) => {})
+        el.removeEventListener('drageover', (e) => {})
+      })
+    }
+  }, [fileList])
 
   const uploadButton = (
     <div>
       +<div className="ant-upload-text">Upload</div>
     </div>
   )
-
   console.log('------->>>>>>>fileList:', fileList)
   return (
     <Wrapper className="upload-drag" id="picWall">
-      <Drag
-        onChange={(list) => handleCallBack(list)}
-        list={fileList}
-        className="img-list"
-      >
+      <ul className="img-list">
         {fileList &&
-          fileList.map((item) => (
-            <div className="upload-list-item" key={item.uid}>
-              <div className="upload-list-item-info">
-                <img src={item.url} />
-                <div className="upload-list-item-actions">
-                  <span onClick={() => handlePreview(item)}>查看</span>
-                  <span onClick={() => handleDelete(item)}>删除</span>
-                </div>
-              </div>
-            </div>
+          fileList.map((item, index) => (
+            <li key={index} >
+              <img src={item.url} tt={index} draggable className='upload-list-item-image' />
+            </li>
           ))}
-      </Drag>
-
+      </ul>
       <Upload
         multiple={props.multiple === false ? false : true}
         listType={props.listType || 'picture-card'}
@@ -167,6 +221,7 @@ const UploadAndDrag = (props) => {
         defaultFileList={fileList}
         showUploadList={false}
         onChange={({ fileList, file }) => beforePostFileList(fileList, file)}
+        onPreview={handlePreview}
         fileList={fileList}
         className={props.className}
         disabled={props.disabled || false}
@@ -183,48 +238,12 @@ const UploadAndDrag = (props) => {
 }
 
 const Wrapper = styled('div')`
-  .upload-list-item {
-    width: 104px;
-    height: 104px;
-    padding: 8px;
-    border: 1px solid #d9d9d9;
-    border-radius: 4px;
-    margin: 8px;
-
-    .upload-list-item-info {
-      height: 100%;
-      position: relative;
-      overflow: hidden;
-      > img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-    .upload-list-item-actions {
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 30px;
-      line-height: 30px;
-      bottom: 8px;
-      text-align: center;
-      z-index: 1;
-      background-color: rgba(0, 0, 0, 0.5);
-      -webkit-transition: all 0.3s;
-      transition: all 0.3s;
-      display: none;
-      span {
-        cursor: pointer;
-        padding: 3px;
-        color: #fff;
-      }
-    }
-    .upload-list-item-actions:hover {
-      display: block;
-    }
+  .ant-upload-list-picture-card .ant-upload-list-item-info::before {
+    height: 20px;
   }
-  .upload-list-item:hover .upload-list-item-actions {
-    display: block;
+  .ant-upload-list-picture-card .ant-upload-list-item-actions {
+    top: 8px;
+    transform: translate(-50%, 0);
   }
 
   .img-list {
@@ -233,7 +252,6 @@ const Wrapper = styled('div')`
       width: 80px;
       height: 80px;
       border: 1px solid #f40;
-      list-style: none;
       margin: 4px;
       img {
         width: 100%;

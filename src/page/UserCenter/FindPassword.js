@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 import UploadAndDrag from '../../components/common/UploadAndDrag/UploadAndDrag'
-import UploadMockData from '../../mock/UploadMockData'
+import UploadMockData from '../../Mock/UploadMockData'
 
 const FindPassword = () => {
     const getFileList = (value) => {
