@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
+import UploadAndDrag from '../../components/common/UploadAndDrag/UploadAndDrag'
+import UploadMockData from '../../mock/UploadMockData'
+
 const FindPassword = () => {
-  return <Wrapper className="find-password">FindPassword Page</Wrapper>
+    const getFileList = (value) => {
+      console.log('=====>>>Parent-filelist:',value)
+    }
+
+  return (
+    <Wrapper className="find-password">
+      <UploadAndDrag defaultData={UploadMockData} callback={getFileList} />
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled('div')``
