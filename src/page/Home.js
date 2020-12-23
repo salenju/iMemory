@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { ImgCard } from '../components'
+import { ImgCard, Add2Cart } from '../components'
 import { MockUtil } from '../utils'
 
 const Home = () => {
@@ -10,7 +10,10 @@ const Home = () => {
   const _imgList3 = MockUtil.ramdomImgs({ width: 434, length: 15 })
   return (
     <Wrapper className="ime-home">
-      <div className="ime-photos">
+      <div>
+        <Add2Cart />
+      </div>
+      {/* <div className="ime-photos">
         <div className="ime-photos-column">
           {_imgList1.map((item, index) => (
             <ImgCard imgData={item} key={index} />
@@ -26,13 +29,12 @@ const Home = () => {
             <ImgCard imgData={item} key={index} />
           ))}
         </div>
-      </div>
+      </div> */}
     </Wrapper>
   )
 }
 
 const Wrapper = styled('div')`
-  margin: auto;
   max-width: 1400px;
   min-height: 1500px;
   padding: 0 2rem;

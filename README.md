@@ -30,7 +30,12 @@
 ```
 
 
-## 3.参考网站
+## 3.功能清单
+- 图片
+    - 懒加载
+    - 支持分享到微博、复制链接
+
+## 4.参考网站
 
 - https://unsplash.com/
 - https://www.pexels.com/zh-cn/

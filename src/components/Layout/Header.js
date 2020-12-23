@@ -38,6 +38,7 @@ const Wrapper = styled('div')`
   background: ${(props) =>
     props.theme && props.theme['@ime-header-background']};
   padding: 10px 20px;
+  opacity: 0.8;
 
   a {
     text-decoration-color: #ff8a00;
@@ -59,6 +60,7 @@ const Wrapper = styled('div')`
   .ime-layout-header-logo {
     > span {
       margin: 0 6px;
+      font-weight: 700;
     }
   }
   .ime-layout-header-menu {
